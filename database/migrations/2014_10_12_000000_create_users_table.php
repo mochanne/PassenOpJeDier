@@ -15,12 +15,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('fname');
+            $table->string('lname')->default('');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('avatar')->default('/cdn/native/img/avatar/default.png');
+            $table->boolean('admin')->default(false);
+            $table->boolean('blocked')->default(false);
             $table->string('password');
+            $table->foreignId('home_id')->nullable()->references('id')->on('homes');
+            // $table->foreign('home_id')->references('id')->on('homes');
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

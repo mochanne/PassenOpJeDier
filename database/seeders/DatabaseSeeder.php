@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            offerStatesSeeder::class,
+            petTypesSeeder::class,
+            dbg_userSeeder::class,
+        ]);
         // \App\Models\User::factory(10)->create();
     }
 }
