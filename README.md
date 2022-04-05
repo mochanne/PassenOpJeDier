@@ -1,1 +1,3 @@
-# IATBD -- PassenOpJeDier.nl\n\nAnne Groenewoud
+# IATBD -- PassenOpJeDier.nl
+
+Anne Groenewoud
