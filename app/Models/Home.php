@@ -11,4 +11,9 @@ class Home extends Model
     public function MyOwner() {
         $this->belongsTo(\App\Models\User::class,"owner_id", "id");
     }
+
+    public function GetMedia() {
+        // get media from `media` where type == 'home' && post_id == this.id
+        $this->hasMany();
+    }
 }

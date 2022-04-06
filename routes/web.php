@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'GetItem']);
 Route::get('/users', [\App\Http\Controllers\UserController::class, 'GetIndex']);
 
+Route::get('/', function() {
+    return view('root.root');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

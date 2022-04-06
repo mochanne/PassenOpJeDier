@@ -5,9 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use Illuminate\Support\Facades\DB;
-
-class dbg_offerSeeder extends Seeder
+class dbg_reviewSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +14,6 @@ class dbg_offerSeeder extends Seeder
      */
     public function run()
     {
-
+        //
     }
 }

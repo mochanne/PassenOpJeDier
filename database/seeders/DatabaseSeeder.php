@@ -16,8 +16,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             offerStatesSeeder::class,
+            mediaTypesSeeder::class,
             petTypesSeeder::class,
             dbg_userSeeder::class,
+            dbg_homesSeeder::class,
+            dbg_offerSeeder::class,
+            dbg_mediaSeeder::class,
+            dbg_reviewSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }

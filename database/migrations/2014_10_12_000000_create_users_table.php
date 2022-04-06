@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('home_id')->nullable()->references('id')->on('homes');
             // $table->foreign('home_id')->references('id')->on('homes');
+            $table->timestamps();
             $table->rememberToken();
         });
     }

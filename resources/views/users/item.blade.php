@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-    {{$user->fname}}'s page
+    {{ $user->fname . '\'s profile'}}
 @endsection
 
 @section('content')
