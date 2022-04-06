@@ -17,14 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('pet_name');
             $table->string('pet_type');
-            $table->text('description');
+            $table->text('description')->default('');
             $table->double('wage',7,2);
             $table->string('location');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->foreignId('owner_id');
             $table->foreign('owner_id')->references('id')->on('users');
-            $table->string('state');
+            $table->string('state')->default('open');
         });
     }
 
