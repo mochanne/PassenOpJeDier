@@ -3,7 +3,7 @@
 @section('title','Add new home')
 
 @section('form_content')
-    <h1>{{$me->name}}'s new home</h1>
+    <h1>{{Auth::user()->name}}'s new home</h1>
 @endsection
 
 @section('target_url','/new/home')

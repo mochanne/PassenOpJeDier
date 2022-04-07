@@ -46,4 +46,22 @@ class User extends Authenticatable
     public function CanReview($target_id) {
         // $table->
     }
+    
+    public function homes() {
+        return $this->hasmany(\App\Models\Home::class, 'owner_id');
+        // return \App\Models\Home::where('owner_id','=',$this->id);
+    }
+    public function profile_reviews() {
+        return $this->hasmany(\App\Models\Review::class, 'receiver_id');
+        // return \App\Models\Review::where('receiver_id','=',$this->id);
+    }
+    public function published_reviews() {
+        return $this->hasmany(\App\Models\Review::class, 'poster_id');
+        // return \App\Models\Review::where('poster_id','=',$this->id);
+    }
+    public function offers() {
+        return $this->hasmany(\App\Models\Offer::class, 'owner_id');
+    }
+
+
 }

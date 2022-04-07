@@ -8,9 +8,9 @@ use Auth;
 class NewEntryController extends Controller
 {
 
-    public function upload_media($req) {
-        $imageName = time().'.'.$req->image->extension();  
-        $req->image->move(public_path('images'), $imageName);
+    public function upload_media($request) {
+        $imageName = time().'.'.$request->image->extension();  
+        $request->image->move(public_path('images'), $imageName);
     }
 
     public function GetNewHome() {
@@ -50,10 +50,19 @@ class NewEntryController extends Controller
 
 
     public function GetNewReview($user_id) {
-
+        // return $user_id;
+        return view('creates.review', ['target' => \App\Models\User::find($user_id)]);
     }
-    public function PostNewReview(Request $request, $user_id) {
+    public function PostNewReview(Request $request, \App\Models\Review $newrev, $user_id) {
+        $newrev->review_text = $request->input('review_text');
 
+        $newrev->score = $request->input('score');
+        
+        $newrev->poster_id = Auth::user()->id;
+        $newrev->receiver_id = $user_id;
+        
+        $newrev->save();
+        return redirect('/users/' . $user_id);
     }
 
 

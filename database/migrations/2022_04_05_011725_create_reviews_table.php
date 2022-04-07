@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->text('review_text');
-            $table->dateTime('posted_on');
-            $table->tinyInteger('stars')->unsigned();
+            // $table->dateTime('posted_on');
+            $table->tinyInteger('score')->unsigned();
             $table->foreignId('poster_id');
             $table->foreignId('receiver_id');
             $table->foreign('receiver_id')->references('id')->on('users');
             $table->foreign('poster_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
