@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Proposal extends Model
+class MediaType extends Model
 {
-    protected $table = "proposals"; 
+    protected $table = 'media_types';
     public $timestamps = false;
 
 }

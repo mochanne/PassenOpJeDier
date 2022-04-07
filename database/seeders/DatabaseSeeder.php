@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             mediaTypesSeeder::class,
             petTypesSeeder::class,
             dbg_userSeeder::class,
-            dbg_homesSeeder::class,
+            dbg_homeSeeder::class,
             dbg_offerSeeder::class,
             dbg_mediaSeeder::class,
             dbg_reviewSeeder::class,

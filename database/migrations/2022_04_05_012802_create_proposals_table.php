@@ -15,13 +15,18 @@ return new class extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('offer_id');
-            $table->foreign('offer_id')->references('id')->on('offers');
-            $table->foreignId('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('home_id')->references('id')->on('homes');
+
+            $table->foreignId('homeowner_id')->references('id')->on('users');
+            $table->foreignId('petowner_id')->references('id')->on('users');
+
             $table->dateTime('proposed_on');
-            $table->dateTime('accepted_on')->nullable();
-            $table->boolean('accepted')->default(false);
+            $table->dateTime('completed_on')->nullable();
+
+            $table->boolean('started_by_petowner')->default(false);
+            $table->boolean('petowner_accepted')->default(false);
+            $table->boolean('homeowner_accepted')->default(false);
+            $table->boolean('discarded')->default(false);
         });
     }
 

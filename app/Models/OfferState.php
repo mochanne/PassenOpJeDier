@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OfferState extends Model
 {
     protected $table = "offer_states"; 
+    public $timestamps = false;
+
 
 }

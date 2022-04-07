@@ -17,13 +17,16 @@ class petTypesSeeder extends Seeder
     public function run()
     {
         DB::table('pet_types')->insert([
-            'type' => 'cat'
+            'type' => 'cat',
+            'plural' => 'cats'
         ]);
         DB::table('pet_types')->insert([
-            'type' => 'dog'
+            'type' => 'dog',
+            'plural' => 'dogs'
         ]);
         DB::table('pet_types')->insert([
-            'type' => 'fish'
+            'type' => 'fish',
+            'plural' => 'fishes'
         ]);
     }
 }

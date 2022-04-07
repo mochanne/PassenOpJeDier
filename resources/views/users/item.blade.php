@@ -1,11 +1,11 @@
 @extends('default')
 
 @section('title')
-    {{ $user->fname . '\'s profile'}}
+    {{ $user->name . '\'s profile'}}
 @endsection
 
 @section('content')
-    <h1>{{$user->fname}} {{$user->lname}}</h1>
+    <h1>{{$user->name}}</h1>
     <img src="{{$user->avatar}}" alt="profile picture"/>
 
     @if ($user->blocked)

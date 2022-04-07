@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pet_types', function (Blueprint $table) {
             $table->string('type')->unique();
+            $table->string('plural')->unique();
         });
     }
 

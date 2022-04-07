@@ -18,24 +18,22 @@ class dbg_userSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'fname' => 'anne',
+            'name' => 'anne Groenewoud',
             'email' => 'mocchapi@gmail.com',
             'admin' => true,
             'password' => bcrypt('VerySecurePassword'),
 
         ]);
         DB::table('users')->insert([
-            'fname' => 'average',
-            'lname' => 'joe',
+            'name' => 'average Joe',
             'email' => 'gardengnostic@gmail.com',
             'password' => bcrypt('GamingIsReal'),
         ]);
         DB::table('users')->insert([
-            'fname' => 'mean',
-            'lname' => 'fella',
+            'name' => 'mean fella',
             'email' => 'gayrights@gmail.com',
             'blocked' => true,
-            'password' => bcrypt('GamingIsReal'),
+            'password' => bcrypt('GamingIsFake'),
         ]);
     }
 }

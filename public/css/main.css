@@ -1,14 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+:root{
+    --extreme-bg-color: #05668D;
+    --main-bg-color: #028090;
+    --panel-bg-color: #00A896;
+    --highlight-color: #02C39A;
+    --super-highlight-color: #9381FF;
+    --text-color: #F0F3BD;
+    --light-text-color: #F8F7FF;
+    
+}
+
 *{
     margin:0;
     box-sizing: border-box;
     padding: 0;
+    font-family: 'Inter', sans-serif;
 }
 html{
+    width: 100%;
      box-sizing: inherit;
      /* font-size: ; */
 }
 
+
+
 body {
+    width: 100%;
     font-size: 1.8rem;
-    padding:4rem;
+    /* padding:4rem; */
+    display: grid;
+    /* grid-template-rows: 15% 85%; */
+    background-color: var(--extreme-bg-color);
+    
+}
+
+header {
+    
+}
+
+main {
+    height: 80vh;
+    margin: auto;
+    width: 90%;
+    background-color: var(--main-bg-color);
+}
+
+
+
+
+p,h1,h2,h3,h4,h5,h6 {
+    color: var(--text-color);
+}
+
+.linkstyle, .linkstyle:visited {
+    color: var(--text-color);
+    padding: 0px 0.5rem;
+    margin: 0px 0.5rem;
+    border-radius:15px;
+    border-width: 2px;
+    border-style:solid;
+    border-color: var(--super-highlight-color);
+    text-decoration:none;
+    transition: 0.15s;
+}
+.linkstyle:hover {
+    background-color: var(--super-highlight-color);
+    padding: 0px 1rem;
+    margin: 0px 0rem;
+    /* border-width: 0px; */
+    
 }

@@ -1,8 +1,8 @@
-<article class="userindex_card_out">
-    <a class="userindex_card_in" href="/users/{{ $user->id }}">
-        <p class="userindex_card_name">
-            {{$user->fname}} {{$user->lname}}
+<article class="card" data-card-type=">
+    <a class="card_in" href="/users/{{ $user->id }}">
+        <p class="card_title">
+            {{$user->name}}
         </p>
-        <img class="userindex_card_avatar" src="{{$user->avatar}}"/>
+        <img class="card_avatar" src="{{$user->avatar}}"/>
     </a>
 </article>
