@@ -23,6 +23,9 @@ Route::get('/users', [\App\Http\Controllers\UserController::class, 'GetIndex']);
 Route::get('/homes/{id}', [\App\Http\Controllers\HomeController::class, 'GetItem']);
 Route::get('/homes', [\App\Http\Controllers\HomeController::class, 'GetIndex']);
 
+Route::get('/offers/{id}', [\App\Http\Controllers\OfferController::class, 'GetItem']);
+Route::get('/offers', [\App\Http\Controllers\OfferController::class, 'GetIndex']);
+
 
 Route::get('/', function() {
     return view('root.root');
@@ -43,10 +46,13 @@ Route::middleware(['auth','notblocked'])->group(function() {
     Route::get('/new/proposal/{offer_id}', [\App\Http\Controllers\NewEntryController::class, 'GetNewProposal']);
     Route::post('/new/proposal/{offer_id}', [\App\Http\Controllers\NewEntryController::class, 'PostNewProposal']);
 
+    Route::get('/new/offer', [\App\Http\Controllers\NewEntryController::class, 'GetNewOffer']);
+    Route::post('/new/offer', [\App\Http\Controllers\NewEntryController::class, 'PostNewOffer']);
+
     Route::get('/new/review/{user_id}', [\App\Http\Controllers\NewEntryController::class, 'GetNewReview']);
     Route::post('/new/review/{user_id}', [\App\Http\Controllers\NewEntryController::class, 'PostNewReview']);
     
-    Route::post('/new/block/{user_id}', [\App\Http\Controllers\NewEntryController::class, 'PostNewBlock'])->middleware(['IsAdmin']);
+    Route::post('/new/block/{user_id}/{state}', [\App\Http\Controllers\NewEntryController::class, 'PostNewBlock'])->middleware(['IsAdmin']);
 });
 
 

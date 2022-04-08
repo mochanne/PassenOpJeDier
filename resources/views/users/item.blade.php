@@ -14,16 +14,19 @@
     
         <h3>Pets</h3>
         @foreach ($user->offers as $offer)
-            {{$offer-id}}
+            @include('offers.components.index_item')
+            {{$offer->id}}
         @endforeach
 
         <h3>Homes</h3>
         @foreach ($user->homes as $home)
+            @include('homes.components.index_item')
             {{$home->id}}
         @endforeach
 
         <h3>Reviews</h3>
         @foreach ($user->profile_reviews as $review)
+            @include('users.components.review')
             {{$review->id}}
         @endforeach
 

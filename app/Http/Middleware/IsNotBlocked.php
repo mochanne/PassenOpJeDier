@@ -22,6 +22,6 @@ class IsNotBlocked
         if ($user->blocked == false) {
             return $next($request);
         };
-        return response()->view('blocked',['user' => $user]);
+        return response()-> view('blocked',['user' => $user]);
     }
 }

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->foreignId('owner_id');
+            $table->string('media')->default('/cdn/native/img/offers/no_pet.jpg');
             $table->foreign('owner_id')->references('id')->on('users');
             $table->string('state')->default('open');
         });

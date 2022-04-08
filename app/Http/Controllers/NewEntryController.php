@@ -14,7 +14,7 @@ class NewEntryController extends Controller
     }
 
     public function GetNewHome() {
-        return view('creates.home', ['me' => Auth::user()]);
+        return view('creates.home');
     }
 
     public function PostNewHome(Request $request, \App\Models\Home $newhome) {
@@ -35,10 +35,24 @@ class NewEntryController extends Controller
 
 
     public function GetNewOffer() {
-        
+        return view('creates.offer');   
     }
-    public function PostNewOffer(Request $request) {
-
+    public function PostNewOffer(Request $request, \App\Models\Offer $new_offer) {
+        $new_offer->pet_type = $request->input('pet_type');
+        $new_offer->pet_name = $request->input('pet_name');
+        $new_offer->description = $request->input('description');
+        $new_offer->wage = $request->input('wage');
+        $new_offer->location = $request->input('location');
+        $new_offer->start_time = $request->input('start_time');
+        $new_offer->end_time = $request->input('end_time');
+        if ($request->input('media')){
+            $new_offer->media = $request->input('media');
+        }
+        // $new_offer->media = $request->input('media');
+        $new_offer->owner_id = Auth::user()->id;
+        
+        $new_offer->save();
+        return redirect('/offers/' . $new_offer->id);
     }
 
     public function GetNewProposal($user_id) {
@@ -66,7 +80,16 @@ class NewEntryController extends Controller
     }
 
 
-    public function PostNewBlock(Request $request, $user_id) {
-
+    public function PostNewBlock(Request $request, $user_id, $state) {
+        if (Auth::user()->admin) {
+            $usr = \App\Models\Users::find($user_id);
+            if ($state == 'true') {
+                $usr->blocked = true;
+            } elseif ($state == 'false') {
+                $usr->blocked = false;
+            }
+            $usr->save();
+        }
+        return redirect('/users/' . $user_id);
     }
 }

@@ -10,17 +10,34 @@
 </head>
 <body>
     <header>
-        <h2>Sittr.nl</h2>
-        <h5>Crowdsourced petsitting</h5>
-        
-        @auth
-            <p>Hello {{Auth::user()->name}} </p><a class="linkstyle" href="/logout/">log out</a>
-        @endauth
-        @guest
-            <p>Welcome!</p>
-            <a class="linkstyle" href="/login">log in</a>
-            <a class="linkstyle" href="/register">register</a>
-        @endguest
+        <ul class="navbar">
+
+            <li class="logo">
+                <a href="/">
+                    <h1>Sittr.nl</h1>
+                    <p>Crowdsourced petsitting</p>
+                </a>
+            </li>
+            
+            <li class="navs">
+                <ul>
+                    <!-- <li>
+                        <a class="navs_button" href="/">Home</a>
+                    </li> -->
+                    <li>
+                        <a class="navs_button" href="/offers">Pets</a>
+                    </li>
+                    <li>                    
+                        <a class="navs_button" href="/homes">Homes</a>
+                    </li>
+                    <li>
+                        <a class="navs_button" href="/users">Users</a>
+                    </li>
+                </ul>    
+            </li>
+                
+            @include('mycomponents.userpanel')
+        </ul>
 
     </header>
     <main>

@@ -1,8 +1,9 @@
-<article class="card" data-card-type=">
-    <a class="card_in" href="/users/{{ $user->id }}">
-        <p class="card_title">
-            {{$user->name}}
-        </p>
-        <img class="card_avatar" src="{{$user->avatar}}"/>
-    </a>
-</article>
+@extends('card')
+
+@section('card_type', 'user')
+
+@section('card_img', $user->avatar)
+
+@section('card_url', '/users/' . $user->id)
+
+@section('card_title', $user->name)
