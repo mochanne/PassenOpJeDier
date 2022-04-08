@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
             // $table->foreignId('owner_id')->references('id')->on('users'); // oops! circular foreign keys break everything!
+            $table->boolean('discarded')->default(false);
             $table->foreignId('owner_id'); // oops! circular foreign keys break everything!
             $table->string('allowed_pet_types')->default('all'); // this is left as a plain string so we can do custom string parsing, like 'cat+dog+turtle' or 'cat' or 'cat+turtle'
             $table->string('location'); // physical adress/regio

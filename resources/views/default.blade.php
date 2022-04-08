@@ -21,9 +21,6 @@
             
             <li class="navs">
                 <ul>
-                    <!-- <li>
-                        <a class="navs_button" href="/">Home</a>
-                    </li> -->
                     <li>
                         <a class="navs_button" href="/offers">Pets</a>
                     </li>

@@ -20,14 +20,14 @@ class offerStatesSeeder extends Seeder
         \DB::table('offer_states')->insert([
             'state' => 'open'
         ]);
+        // \DB::table('offer_states')->insert([
+        //     'state' => 'expired'
+        // ]); Requires time-tracking, something i can;t quite figure out
         \DB::table('offer_states')->insert([
-            'state' => 'expired'
+            'state' => 'accepted'
         ]);
         \DB::table('offer_states')->insert([
-            'state' => 'completed'
-        ]);
-        \DB::table('offer_states')->insert([
-            'state' => 'closed'
+            'state' => 'denied'
         ]);
     }
 }

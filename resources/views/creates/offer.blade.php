@@ -36,8 +36,8 @@
     <input required type="number" id="wage" name="wage" min="0.00" max="99999.999" step="0.01" value="10.0">
 
     <label for="media">Picture</label>
-    <input type="file" name="media" id="media" accept="image/*,video/*">
+    <input required type="file" name="media" id="media" accept="image/*,video/*">
     
     <label for="description">Description</label>
-    <textarea name="description" id="description"></textarea>
+    <textarea required name="description" id="description"></textarea>
     @endsection

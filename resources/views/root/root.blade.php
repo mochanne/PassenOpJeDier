@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-    <h1>Hi nerds</h1>
+    <h1>Debug zone; redirects to /offers for now</h1>
 
     <ul>
         @foreach (['users','homes','offers'] as $page)

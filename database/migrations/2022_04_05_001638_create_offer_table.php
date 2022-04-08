@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('pet_name');
             $table->string('pet_type');
+            $table->boolean('discarded')->default(false);
             $table->text('description')->default('');
             $table->double('wage',7,2);
             $table->string('location');

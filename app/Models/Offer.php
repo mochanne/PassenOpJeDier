@@ -14,6 +14,12 @@ class Offer extends Model
         return $this->belongsTo(\App\Models\User::class,"owner_id", "id");
     }
 
+
+    public function proposals() {
+        return $this->hasMany(\App\Models\Proposal::class, "offer_id");
+    }
+
+
     public function GetOwner() {
         // alias
         return $this->owner();

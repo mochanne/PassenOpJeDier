@@ -8,8 +8,8 @@
 
 @section('target_url','/new/home')
 @section('form_inputs')
-    <label for="media">Picture:</label>
-    <input type="file" name="media" id="media" accept="image/*,video/*">
+    <label for="media">Picture</label>
+    <input required type="file" name="media" id="media" accept="image/*,video/*">
 
     <label for="checkholder">Allowed pets</label>
     <section id="checkholder" class="formgroup">
@@ -20,8 +20,8 @@
     </section>
 
     <label for="location">location</label>
-    <input type="text" name="location" id="location">
+    <input required type="text" name="location" id="location">
     
     <label for="description">description</label>
-    <textarea name="description" id="description"></textarea>
+    <textarea required name="description" id="description"></textarea>
 @endsection

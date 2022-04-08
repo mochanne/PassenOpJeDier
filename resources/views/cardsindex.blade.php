@@ -4,7 +4,10 @@
 @endsection
 @section('content')
     <section class="filterbar">
-        <input type="text" id="searchbar" onchange="runsearch();">
+        <input type="text" id="searchbar" oninput="runsearch(this.value);">
+        <form>
+            @yield('filters')
+        </form>
         @hasSection('create_url')
         @auth
                 <a class="fancylink" href="@yield('create_url')">Add new</a>

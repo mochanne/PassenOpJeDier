@@ -8,9 +8,10 @@ use Auth;
 class NewEntryController extends Controller
 {
 
-    public function upload_media($request) {
-        $imageName = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('images'), $imageName);
+    public function upload_media($request, $destination) {
+        $imageName = time().'.'.$request->media->extension();  
+        $request->media->move(public_path('cdn/upload/img/' . $destination), $imageName);
+        return '/cdn/upload/img/' . $destination . '/' . $imageName;
     }
 
     public function GetNewHome() {
@@ -28,9 +29,35 @@ class NewEntryController extends Controller
             };
             $newhome->allowed_pet_types = $allowed_pets;
         }
+
+        $newhome->media = $this->upload_media($request, 'homes');
+
         $newhome->owner_id = Auth::user()->id;
         $newhome->save();
         return redirect('/homes/' . $newhome->id);
+    }
+
+    public function PostDeleteHome($home_id) {
+        $usr = Auth::user();
+        $home = \App\Models\Home::find($home_id);
+        if ($home->owner_id == $usr->id || $usr->admin) {
+            $home ->discarded = true;
+            $home->save();
+            // return "ya";
+        };
+        
+        return redirect('/homes');
+    }
+    public function PostDeleteOffer($offer_id) {
+        $usr = Auth::user();
+        $offer = \App\Models\Offer::find($offer_id);
+        if ($offer->owner_id == $usr->id || $usr->admin) {
+            $offer ->discarded = true;
+            $offer->save();
+            // return "ya";
+        };
+        
+        return redirect('/homes');
     }
 
 
@@ -45,9 +72,7 @@ class NewEntryController extends Controller
         $new_offer->location = $request->input('location');
         $new_offer->start_time = $request->input('start_time');
         $new_offer->end_time = $request->input('end_time');
-        if ($request->input('media')){
-            $new_offer->media = $request->input('media');
-        }
+        $new_offer->media = $this->upload_media($request, 'offers');
         // $new_offer->media = $request->input('media');
         $new_offer->owner_id = Auth::user()->id;
         
@@ -55,13 +80,60 @@ class NewEntryController extends Controller
         return redirect('/offers/' . $new_offer->id);
     }
 
-    public function GetNewProposal($user_id) {
-        
+    public function GetNewProposalFromOffer($offer_id) {
+        return view('creates.proposalOffer', ['offer' => \App\Models\Offer::find($offer_id)]);
     }
-    public function PostNewProposal(Request $request, $user_id) {
+    public function PostNewProposalFromOffer(Request $request, \App\Models\Proposal $newprop, $offer_id) {
+        $offer = \App\Models\Offer::find($offer_id);
+        $newprop->offer_id = $offer_id;
+        $newprop->home_id = $request->home_id;
+        $newprop->homeowner_id = Auth::user()->id;
+        $newprop->petowner_id = $offer->owner->id;
+        $newprop->homeowner_accepted = true;
+        $newprop->save();
+        return redirect('/offers/' . $offer_id);
 
     }
 
+    public function GetNewProposalFromHome($home_id) {
+        return view('creates.proposalHome', ['home' => \App\Models\Home::find($home_id)]);
+    }
+    public function PostNewProposalFromHome(Request $request, \App\Models\Proposal $newprop, $home_id) {
+        $home = \App\Models\Home::find($home_id);
+        $newprop->offer_id = $request->offer_id;
+        $newprop->home_id = $home_id;
+        $newprop->homeowner_id = $home->owner->id;
+        $newprop->petowner_id = Auth::user()->id;
+        $newprop->petowner_accepted = true;
+        $newprop->save();
+        return redirect('/homes/' . $home_id);
+    }
+    public function PostAcceptProposal(Request $request, $proposal_id) {
+        $proposal = \App\Models\Proposal::find($proposal_id);
+        $you = Auth::user();
+        if (($proposal->homeowner_id != $proposal->petowner_id) && !$proposal->discarded) {
+            if ($you->id == $proposal->homeowner_id) {
+                $proposal->homeowner_accepted = true;
+                $proposal->save();
+            } elseif ($you->id == $proposal->petowner_id) {
+                $proposal->petowner_accepted = true;
+                $proposal->save();
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function PostDenyProposal(Request $request, $proposal_id) {
+        $proposal = \App\Models\Proposal::find($proposal_id);
+        if ($proposal->homeowner_id != $proposal->petowner_id) {
+            if (($you->id == $proposal->homeowner_id) || ($you->id == $proposal->petowner_id)) {
+                $proposal->discarded = true;
+                $proposal->save();
+            }
+        }
+        return redirect()->back();
+
+    }
 
     public function GetNewReview($user_id) {
         // return $user_id;
@@ -80,12 +152,15 @@ class NewEntryController extends Controller
     }
 
 
-    public function PostNewBlock(Request $request, $user_id, $state) {
+    public function PostNewBlock(Request $request, $user_id) {
         if (Auth::user()->admin) {
-            $usr = \App\Models\Users::find($user_id);
-            if ($state == 'true') {
+            $usr = \App\Models\User::find($user_id);
+
+            // Not confident enough in how laravel types work to try and cast
+            // this from string to bool, so we're doing it this way
+            if ($request->state == 'true') {
                 $usr->blocked = true;
-            } elseif ($state == 'false') {
+            } elseif ($request->state == 'false') {
                 $usr->blocked = false;
             }
             $usr->save();

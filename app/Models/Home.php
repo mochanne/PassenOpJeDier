@@ -15,9 +15,17 @@ class Home extends Model
         return $this->belongsTo(\App\Models\User::class,"owner_id", "id");
     }
 
-
-    public function GetMedia() {
-        // get media from `media` where type == 'home' && post_id == this.id
-        $this->hasMany();
+    public function owner() {
+        return $this->GetOwner();
     }
+
+    public function proposals() {
+        return $this->hasMany(\App\Models\Proposal::class, "home_id");
+    }
+
+    // public function GetMedia() {
+    //     // get media from `media` where type == 'home' && post_id == this.id
+    // media is deprecated due to complexity
+    //     $this->hasMany();
+    // }
 }

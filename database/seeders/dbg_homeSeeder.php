@@ -18,13 +18,13 @@ class dbg_homeSeeder extends Seeder
     {
         DB::table('homes')->insert([
             'owner_id' => 1,
-            'allowed_pet_types' => 'all',
+            'allowed_pet_types' => '+cat+fish',
             'location' => 'noordwijk',
             'description' => 'cool huis :3'
         ]);
         DB::table('homes')->insert([
             'owner_id' => 3,
-            'allowed_pet_types' => 'cats',
+            'allowed_pet_types' => '+cat',
             'location' => 'gaming zone',
             'description' => 'ik haat huizen >:['
         ]);    }

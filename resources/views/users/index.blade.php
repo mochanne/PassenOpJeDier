@@ -6,7 +6,7 @@
 @section('cards')
     @foreach ($users as $user)
         @if ($user->blocked == false)
-            <li>
+            <li class="card_out">
                 @include('users.components.index_item')            
             </li>
         @endif

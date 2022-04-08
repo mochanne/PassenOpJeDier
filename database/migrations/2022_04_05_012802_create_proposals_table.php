@@ -16,17 +16,19 @@ return new class extends Migration
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('home_id')->references('id')->on('homes');
+            $table->foreignId('offer_id')->references('id')->on('offers');
 
             $table->foreignId('homeowner_id')->references('id')->on('users');
             $table->foreignId('petowner_id')->references('id')->on('users');
 
-            $table->dateTime('proposed_on');
+            // $table->dateTime('proposed_on')->nullable;
             $table->dateTime('completed_on')->nullable();
 
-            $table->boolean('started_by_petowner')->default(false);
+            // $table->boolean('started_by_petowner')->default(false);
             $table->boolean('petowner_accepted')->default(false);
             $table->boolean('homeowner_accepted')->default(false);
             $table->boolean('discarded')->default(false);
+            $table->timestamps();
         });
     }
 

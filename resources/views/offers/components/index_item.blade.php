@@ -11,8 +11,8 @@
             {{$offer->pet_name}}
         </h1>
 
-        <p>{{$offer->GetOwner->name}}</p>
-        <p class="card_daterange">{{$offer->start_time}}</p>
+        <p class="card_author">{{$offer->GetOwner->name}}</p>
+        <p class="card_daterange">{{explode(" ",$offer->start_time)[0]}}</p>
         <p class="card_wage">${{$offer->wage}}</p>
         <p class="card_location">{{$offer->location}}</p>
     </section>
