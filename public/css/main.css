@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+:root{
+    --extreme-bg-color: #ffffff;
+    --main-bg-color: #fdf6f1;
+    --panel-bg-color: #f1d693;
+    --highlight-color: #ff4c30;
+    --super-highlight-color: #9381FF;
+    --text-color: #714d69;
+    --h-text-color: #323278;
+    --nav-text-color: #fdf6f1;
+}   
+
+*{
+    margin:0;
+    box-sizing: border-box;
+    list-style: none;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+html{
+    height: 100%;
+    width: 100%;
+    box-sizing: inherit;
+     /* font-size: ; */
+}
+
+.reviewholder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.reviewholder >li {
+    width: 25%;
+    max-width: 500px;
+    height: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: var(--panel-bg-color);
+}
+
+.review {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 25% 75%;
+}
+.review_header > p {
+    font-size: 150%;
+    font-weight: 900;
+    text-shadow: 1px 1px 2px var(--super-highlight-color);
+    width: 100%;
+}
+
+.review_header > p::after {
+    font-size: 60%;
+    content: '/10';
+}
+
+.review_header>figure {
+    width: 75%;
+}
+
+.review_header >figure> img {
+    width: 150px;
+    height: 150px;
+    image-rendering: crisp-edges;
+    border-radius: 1000px;
+    object-fit: cover;
+    /* content */
+}
+
+.review_header {
+    display: grid; 
+    grid-template: "a b"
+                    "c c";
+    /* grid-template-rows: 25% 75%; */
+}
+
+
+input,select,textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 75%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 1.8rem;
+    /* padding:4rem; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* grid-template-rows: 15% 85%; */
+    background: url('https://www.toptal.com/designers/subtlepatterns/uploads/dot-grid.png');
+    
+}
+
+
+
+header {
+    z-index: 1;
+    background: url('https://www.toptal.com/designers/subtlepatterns/uploads/stripes-light.png'), var(--panel-bg-color);
+    background-blend-mode: multiply;
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.15);
+    padding: 10px;
+}
+
+.navbar {
+    list-style: none;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.navs{
+    margin: 0px 15%;
+    flex-grow: 1;
+}
+.navs > ul{
+    height: 100%;
+    display: flex;
+    justify-content:space-around;
+    border-bottom: 8px solid rgba(0,0,0,0);
+    transition: 0.25s;
+}
+.navs>ul:hover {
+    border-bottom: 8px solid var(--super-highlight-color);
+}
+
+.navs > a{
+    color: var(--h-text-color);
+}
+
+
+
+.navs >ul >li {
+    margin-top: auto;
+    height:max-content;
+    transition: 0.2s;
+    border-bottom: 0px;
+}
+
+.navs >ul >li:hover {
+    font-size: 110%;
+    border-bottom: 8px solid var(--super-highlight-color);
+    font-weight:900;
+}
+.navs >ul >li:active {
+    font-size: 80%;
+}
+/* .navs > ul >li >a:hover {
+    color: var(--super-highlight-color);
+} */
+
+
+.userpanel {
+    margin: auto;
+    height: min-content;
+    font-size: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+.userpanel_greet{
+    font-size: 115%;
+    flex-basis: 100%;
+}
+.userpanel > a {
+    height: min-content;
+    /* width: min-content; */
+}
+
+.logo {
+    /* font-size: 1.2vw*1vmax; */
+    text-align: center;
+}
+.logo > a >h1 {
+    text-shadow: 3px 3px 1px var(--nav-text-color), 4px 4px 1px var(--nav-text-color), 5px 5px 1px var(--nav-text-color);
+    transition: 0.1s;
+}
+.logo:hover > a >h1 {
+    text-shadow: 3px 3px 1px var(--nav-text-color), 6px 6px 1px var(--nav-text-color), 9px 9px 1px var(--nav-text-color);
+}
+
+main {
+    box-shadow: 0px 0px 10px 1px rgba(100, 100, 100, 0.247);
+    flex-grow: 1;
+    /* min-height: 80%; */
+    margin: auto;
+    width: 80%;
+    background: var(--main-bg-color);
+}
+
+
+
+
+p,h1,h2,h3,h4,h5,h6 {
+    color: var(--text-color);
+}
+
+a:visited, a {
+    text-decoration: none;
+}
+
+.simplelink {
+    color: var(--super-highlight-color);
+}
+
+
+.fancylink, .fancylink:visited {
+    /* additional button-like link styling */
+    color: var(--text-color);
+    padding: 0px 0.5rem;
+    margin: 0px 0.5rem;
+    border-radius:15px;
+    border-width: 2px;
+    border-style:solid;
+    border-color: var(--super-highlight-color);
+    text-decoration:none;
+    transition: 0.15s;
+}
+.fancylink:hover {
+    color: var(--extreme-bg-color);
+    background-color: var(--super-highlight-color);
+    padding: 0px 1rem;
+    margin: 0px 0rem;
+    /* border-width: 0px; */
+    
+}
+.fancylink:active {
+    transform: scale(0.8);
+}
+
+.cardholder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+
+.search_hide {
+    transition: 0.4s;
+    transform: scale(0);
+    position: absolute;
+    /* display: none !important; */
+}
+.filter_hide {
+    transition: 0.4s;
+    transform: scale(0);
+    position: absolute;
+    /* display: none !important; */
+}
+
+.card_out {
+    background: url('https://www.toptal.com/designers/subtlepatterns/uploads/stripes-light.png'), var(--panel-bg-color);
+    background-blend-mode: multiply;
+    border-radius: 15px;
+    box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.35);
+    margin: 10px;
+    min-height: 200px;
+    height: fit-content;
+    min-width: 350px;
+    max-width: 700px;
+    width:25%;
+    margin: 30px 30px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    transition: 0.1s;
+    /* transition: scale 0.3s; */
+}
+
+.card_out:hover {
+    box-shadow: 8px 8px 12px 2px rgba(0,0,0,0.5);
+    transform: scale(1.05);
+}
+
+.card {
+    height: 100%;
+
+}
+
+.card_in {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* grid-template-columns: 1fr 1fr; */
+    
+}
+
+.card_details {
+    margin: 5px;
+    flex-basis: 65%;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.card_avatar {
+    width: 200px;
+    height: 200px;
+    flex-grow: 0;
+
+}
+
+.card_avatar > img {
+    width: 100%;
+    height: 100%;
+    background-color: var(--extreme-bg-color);
+    image-rendering: crisp-edges;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.card_title, .card_author {
+    text-align: center;
+}
+
+.card_author {
+    margin-bottom: 10px;
+
+}
+
+
+
+.form_content {
+    text-align: center;
+
+}
+
+.form_inputs {
+    margin: auto;
+    width: 80%;
+}
+
+.form_inputs_inside > label {
+    padding-top: 0px;
+    /* padding-bottom: 10px; */
+    color: var(--h-text-color);
+    /* height: ; */
+    font-size: larger;
+    /* text-align: center; */
+}
+
+.form_inputs_inside > label::after {
+    content:":";
+}
+
+.form_inputs_inside {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* grid-template-columns: 1fr; */
+}
+
+.form_inputs_inside > * {
+    min-width: 200px;
+    height: 100%;
+    width: 50%;
+}
+
+
+.fancysubmit {
+    display: block;
+    padding: 0px 0.5rem;
+    margin: 20px auto;
+    border-width: 5px;
+    background: none;
+    border-color: var(--super-highlight-color);
+    border-style: solid;
+    color: var(--h-text-color);
+    /* padding: 5px 15px; */
+    border-radius: 15px;
+    font-size: 130%;
+    transition: 0.2s;
+}
+
+input, textarea{
+    padding: 5px 15px;
+    border-color: var(--text-color);
+    border-style: solid;
+    border-radius: 15px;
+    /* margin: 5px; */
+    transition: 0.2s;
+}
+input:invalid, textarea:invalid {
+    border-color: var(--highlight-color);
+}
+input:valid, textarea:valid {
+    /* border-color: ; */
+}
+
+.fancysubmit:hover {
+    background-color: var(--super-highlight-color);
+    padding: 0px 1rem;
+    margin: 20px auto;
+    /* transform: scale(1.05);   */
+}
+.fancysubmit:active {
+    transform: scale(0.85);
+}
+
+.formgroup{
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+.formgroup > label{
+    text-align: left;
+    margin-left: 5px;
+    margin-right: auto;
+    font-size: 75%;
+}
+.formgroup > * {
+    margin-left: auto;
+}
+
+.filterbar {
+    width: 100%;
+    background: url('https://www.toptal.com/designers/subtlepatterns/uploads/stripes-light.png'), var(--panel-bg-color);
+    background-blend-mode: multiply;
+    padding: 10px;
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.35);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+
+.profile_topbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile_topbar > * {
+    margin: auto 15px;
+}
+
+.profile_topbar > img {
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    image-rendering: crisp-edges;
+    border-radius: 1000px;
+    background-color: var(--extreme-bg-color);
+}
+
+.product_topbar {
+    display: grid;
+    height: 70vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70% 15% 15%;
+    text-align: center;
+    background-color: var(--panel-bg-color);
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.35);
+}
+
+.product_topbar > img {
+    width: 90%;
+    margin: auto;
+    height: 100%;
+    object-fit:contain;
+    image-rendering: crisp-edges;
+    border-radius: 15px;
+
+}
+
+.profile_content {
+    margin: auto;
+    width: 80%;
+    height: 100%;
+}
+main h3 {
+    text-align: center;
+    /* margin-left: 75px; */
+    margin-top: 75px;
+}
+
+
+.proposal > h4 {
+    text-align: center;
+    font-weight: 1900;
+    text-shadow: 1px 0px 1px var(--highlight-color);
+}
+
+.proposalholder {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.proposalholder > li {
+    background-color: var(--panel-bg-color);
+    border-radius: 15px;
+    margin: 20px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
